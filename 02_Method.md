@@ -306,10 +306,10 @@ public class Main {
 
 **Quy trình chạy:**
 
-1️⃣ JVM chạy `main()`
-2️⃣ `main()` gọi `sayHello()`
-3️⃣ `sayHello()` chạy code bên trong
-4️⃣ chạy xong → quay lại `main()`
+1️⃣ JVM chạy `main()` \
+2️⃣ `main()` gọi `sayHello()` \
+3️⃣ `sayHello()` chạy code bên trong \
+4️⃣ chạy xong → quay lại `main()` 
 
 ---
 
