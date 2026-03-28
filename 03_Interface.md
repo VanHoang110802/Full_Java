@@ -403,3 +403,207 @@ Interface giúp bạn:
 * Dễ thêm tính năng mới
 * Code **không bị phụ thuộc cứng**
 
+---
+
+Haha câu hỏi này rất “đúng chất” người đang bắt đầu hiểu sâu rồi 😄
+
+👉 **80% bạn vừa hiểu = cách dùng Interface cơ bản**
+👉 **20% còn lại = thứ khiến bạn code như dev chuyên nghiệp**
+
+Mình tóm lại 20% đó cho bạn, nhưng giải thích kiểu **dễ hiểu nhất có thể** nhé.
+
+---
+
+# 🔥 1️⃣ Dependency Injection (DI) – cái bạn vừa chạm vào
+
+Bạn đã thấy:
+
+```java
+OrderService order = new OrderService(new MomoPayment());
+```
+
+👉 Đây chính là **Dependency Injection (DI)**
+
+Thay vì:
+
+```java
+class OrderService {
+    Payment payment = new MomoPayment(); // ❌ hard-code
+}
+```
+
+👉 Bạn **inject từ bên ngoài**
+
+💡 Trong thực tế (Spring Boot):
+
+```java
+@Autowired
+Payment payment;
+```
+
+👉 Framework tự nhét vào cho bạn
+
+---
+
+# 🔥 2️⃣ Dùng Interface để “mock” khi test
+
+Ví dụ:
+
+Bạn không muốn test thật (vì tốn tiền, gọi API thật, etc.)
+
+👉 Bạn tạo fake:
+
+```java
+class FakePayment implements Payment {
+    public boolean pay(int amount) {
+        return true; // luôn thành công
+    }
+}
+```
+
+👉 Test:
+
+```java
+OrderService order = new OrderService(new FakePayment());
+```
+
+👉 Không cần:
+
+* kết nối ngân hàng
+* gọi API thật
+
+---
+
+# 🔥 3️⃣ Interface + nhiều implementation (Strategy pattern)
+
+Bạn đã làm rồi, nhưng tên “xịn” của nó là:
+
+👉 **Strategy Pattern**
+
+Ví dụ:
+
+```id="zrqylm"
+Payment
+ ├── MomoPayment
+ ├── CreditCardPayment
+ └── BankTransferPayment
+```
+
+👉 Chọn strategy runtime:
+
+```java
+if (userChoice == 1) payment = new MomoPayment();
+else payment = new CreditCardPayment();
+```
+
+---
+
+# 🔥 4️⃣ Default method (Java 8+)
+
+Interface giờ **có thể có code luôn**
+
+```java
+interface Payment {
+
+    void pay(int amount);
+
+    default void log() {
+        System.out.println("Logging payment...");
+    }
+}
+```
+
+👉 Class implement **không cần override `log()`**
+
+---
+
+# 🔥 5️⃣ Functional Interface + Lambda (rất hay dùng)
+
+Ví dụ:
+
+```java
+interface Calculator {
+    int calculate(int a, int b);
+}
+```
+
+👉 Thay vì viết class:
+
+```java
+Calculator c = new Calculator() {
+    public int calculate(int a, int b) {
+        return a + b;
+    }
+};
+```
+
+👉 Viết gọn:
+
+```java
+Calculator c = (a, b) -> a + b;
+```
+
+💥 Đây là nền tảng của:
+
+* Stream API
+* xử lý list, filter, map
+
+---
+
+# 🔥 6️⃣ Interface trong framework (level thực tế)
+
+Ví dụ trong Spring:
+
+```id="6c48q3"
+UserService (interface)
+UserServiceImpl (class)
+```
+
+Controller chỉ dùng:
+
+```java
+UserService userService;
+```
+
+👉 Bạn có thể thay:
+
+* DB → API
+* MySQL → MongoDB
+* Local → Cloud
+
+**không cần sửa controller**
+
+---
+
+# 🎯 Tóm lại “20% còn lại”
+
+| Level | Bạn học được gì          |
+| ----- | ------------------------ |
+| 80%   | implements, polymorphism |
+| +5%   | Dependency Injection     |
+| +5%   | Test (mock)              |
+| +5%   | Strategy pattern         |
+| +3%   | default method           |
+| +2%   | lambda                   |
+
+---
+
+# 💡 Nói thẳng cho bạn dễ nhớ
+
+👉 Interface không phải để “viết method”
+
+👉 Nó là để:
+
+```id="g8ce3g"
+tách phần "dùng" và phần "làm"
+```
+
+---
+
+# 🚀 Nếu bạn muốn lên trình nhanh
+
+Mình có thể cho bạn:
+
+1. 🔧 Mini project: **Order + Payment + nhiều method (real hơn)**
+2. 🧠 Bài tập: đoán khi nào dùng interface
+3. 💼 Ví dụ kiểu **Spring Boot thật (Service + Repository)**
