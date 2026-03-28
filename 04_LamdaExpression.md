@@ -569,3 +569,193 @@ list.stream()
 > 👉 hãy đọc như **dòng chảy dữ liệu**
 
 ---
+
+Luyện “đọc dòng chảy” là cách nhanh nhất để giỏi Lambda + Stream.
+
+
+# 🟢 Level 1 — Cơ bản (1 bước)
+
+```java
+list.stream()
+    .forEach(x -> System.out.println(x));
+```
+
+👉 Nhiệm vụ:
+
+* Đọc thành **1 câu tiếng Việt**
+
+---
+
+```java
+list.stream()
+    .filter(x -> x > 10)
+    .forEach(x -> System.out.println(x));
+```
+
+👉 Gợi ý:
+
+* Có 2 bước: lọc + in
+
+---
+
+# 🟡 Level 2 — 2 bước (filter + map)
+
+```java
+list.stream()
+    .filter(x -> x % 2 == 0)
+    .map(x -> x * 3)
+    .forEach(x -> System.out.println(x));
+```
+
+👉 Nhiệm vụ:
+
+* Đọc theo dạng:
+
+> “Lấy từng phần tử → … → … → …”
+
+---
+
+# 🔵 Level 3 — đổi kiểu dữ liệu
+
+```java
+list.stream()
+    .map(s -> s.length())
+    .forEach(len -> System.out.println(len));
+```
+
+👉 Câu hỏi:
+
+* `s` là gì?
+* `len` là gì?
+
+---
+
+# 🟣 Level 4 — bắt đầu “rối nhẹ”
+
+```java
+list.stream()
+    .filter(s -> s.startsWith("A"))
+    .map(s -> s.toUpperCase())
+    .forEach(s -> System.out.println(s));
+```
+
+👉 Nhiệm vụ:
+
+* Đọc trôi chảy như tiếng Việt
+* Không đọc ký hiệu code
+
+---
+
+# 🔴 Level 5 — Lambda lồng nhau
+
+```java
+list1.forEach(x -> {
+    list2.forEach(y -> {
+        System.out.println(x * y);
+    });
+});
+```
+
+👉 Nhiệm vụ:
+
+* Đọc theo kiểu:
+
+> “với mỗi x… → với mỗi y…”
+
+---
+
+# 🔥 Level 6 — giống code thực tế
+
+```java
+users.stream()
+    .filter(u -> u.getAge() > 18)
+    .forEach(u -> {
+        orders.stream()
+            .filter(o -> o.getUserId() == u.getId())
+            .forEach(o -> System.out.println(o));
+    });
+```
+
+👉 Nhiệm vụ:
+
+* Đọc thành **1 đoạn mô tả logic**
+* Hiểu quan hệ giữa `u` và `o`
+
+---
+
+# 💣 Level 7 — hơi “não xoắn” (pro)
+
+```java
+list.stream()
+    .filter(x -> {
+        return x > 5 && x < 20;
+    })
+    .map(x -> {
+        int y = x * 2;
+        return y + 1;
+    })
+    .forEach(result -> {
+        System.out.println(result);
+    });
+```
+
+👉 Nhiệm vụ:
+
+* Đọc rõ từng bước
+* Không bị mất luồng
+
+---
+
+# 🧠 Cách luyện đúng (quan trọng hơn bài)
+
+Khi bạn làm, hãy follow đúng quy trình này:
+
+---
+
+## Bước 1: Tìm “đối tượng chính”
+
+```java
+list.stream()
+```
+
+👉 đang xử lý **list**
+
+---
+
+## Bước 2: Mỗi dòng = 1 hành động
+
+* filter → lọc
+* map → biến đổi
+* forEach → xử lý cuối
+
+---
+
+## Bước 3: Đọc theo flow
+
+👉 Luôn đọc kiểu:
+
+> “Lấy từng phần tử → … → … → …”
+
+---
+
+## Bước 4: Thay `x`, `s`, `u` bằng nghĩa thật
+
+❌
+
+> x → ???
+
+✅
+
+> user → người dùng \
+> s → chuỗi
+
+---
+
+# 🎯 Mục tiêu luyện
+
+Khi bạn đạt level này:
+
+* Nhìn vào code → hiểu ngay không cần dịch
+* Đọc trong đầu như tiếng Việt
+
+👉 là bạn đã “qua cửa” Lambda
