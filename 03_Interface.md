@@ -1,5 +1,11 @@
 Trong **Java**, **Interface** là một khái niệm rất quan trọng trong lập trình hướng đối tượng (OOP). Nó giúp bạn **định nghĩa một “bộ quy tắc” (contract)** mà các class khác phải tuân theo.
 
+Để mình cho bạn một ví dụ tưởng tượng nhé. 
+
+Hãy tưởng tượng bạn có một chương trình, trong đó có một class cho mỗi hãng máy in vì mỗi máy in hoạt động khác nhau. Giờ bạn có thêm một máy in mới và để nó hoạt động được, bạn cần viết thêm một class nữa. Làm sao để đảm bảo class mới này và tất cả các class khác đều có đầy đủ chức năng mà một máy in cần? Câu trả lời là interface (giao diện). Interface đảm bảo rằng mọi class thực hiện interface này đều có tất cả các phương thức cần thiết để đảm bảo chức năng cơ bản của máy in. Giờ bạn biết chắc rằng một class thực hiện interface này sẽ có đầy đủ chức năng của interface đó. Ví dụ như in ấn, báo lượng mực còn lại, số trang đã in, vân vân. 
+
+Điều này cũng giúp bạn truy cập vào những thứ khác nữa. Ví dụ, giờ bạn không cần quan tâm mình đang dùng class nào nữa. Chỉ cần nó có interface máy in, bạn có thể gọi hàm để in. Nghĩa là bạn có thể viết một hàm với interface làm tham số và hàm này sẽ hoạt động được với mọi class thực hiện interface máy in.
+
 ---
 
 ## 1️⃣ Interface là gì?
