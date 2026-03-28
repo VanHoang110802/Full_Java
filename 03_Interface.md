@@ -214,3 +214,204 @@ Interface:
 * Class dùng **implements**
 * Hỗ trợ **đa hình và multiple inheritance**
 
+Ok, mình viết cho bạn **một ví dụ FULL từ A → Z** để bạn thấy rõ:
+
+* Interface
+* implements
+* extends
+* dùng thực tế
+
+---
+
+# 🔥 Ví dụ hoàn chỉnh: Quản lý động vật
+
+## 1️⃣ Tạo Interface
+
+```java
+interface Animal {
+    void eat();
+    void makeSound();
+}
+```
+
+```java
+interface Pet {
+    void play();
+}
+```
+
+👉 Đây chỉ là **“bản cam kết”**, chưa có code bên trong.
+
+---
+
+## 2️⃣ Class implement Interface
+
+```java
+class Dog implements Animal, Pet {
+
+    public void eat() {
+        System.out.println("Dog is eating");
+    }
+
+    public void makeSound() {
+        System.out.println("Dog says: Gâu gâu");
+    }
+
+    public void play() {
+        System.out.println("Dog is playing");
+    }
+}
+```
+
+---
+
+## 3️⃣ Class khác implement cùng Interface
+
+```java
+class Cat implements Animal, Pet {
+
+    public void eat() {
+        System.out.println("Cat is eating");
+    }
+
+    public void makeSound() {
+        System.out.println("Cat says: Meo meo");
+    }
+
+    public void play() {
+        System.out.println("Cat is playing");
+    }
+}
+```
+
+---
+
+## 4️⃣ Interface kế thừa Interface (extends)
+
+```java
+interface SmartAnimal extends Animal {
+    void think();
+}
+```
+
+---
+
+## 5️⃣ Class implement interface đã kế thừa
+
+```java
+class Human implements SmartAnimal {
+
+    public void eat() {
+        System.out.println("Human eating");
+    }
+
+    public void makeSound() {
+        System.out.println("Human talking");
+    }
+
+    public void think() {
+        System.out.println("Human thinking...");
+    }
+}
+```
+
+---
+
+## 6️⃣ Main chạy chương trình
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        // dùng Dog
+        Animal dog = new Dog();
+        dog.eat();
+        dog.makeSound();
+
+        // dùng Cat
+        Animal cat = new Cat();
+        cat.makeSound();
+
+        // dùng Pet
+        Pet pet = new Dog();
+        pet.play();
+
+        // dùng SmartAnimal
+        SmartAnimal human = new Human();
+        human.think();
+    }
+}
+```
+
+---
+
+# 🎯 Output
+
+```text
+Dog is eating
+Dog says: Gâu gâu
+Cat says: Meo meo
+Dog is playing
+Human thinking...
+```
+
+---
+
+# 🧠 Giải thích cực quan trọng
+
+## 👉 1. Vì sao viết thế này?
+
+```java
+Animal dog = new Dog();
+```
+
+Không viết:
+
+```java
+Dog dog = new Dog();
+```
+
+👉 Vì:
+
+* Sau này có thể thay `Dog` bằng `Cat`, `Bird`
+* Code **linh hoạt hơn**
+
+---
+
+## 👉 2. Một object có nhiều “vai trò”
+
+```java
+Dog d = new Dog();
+```
+
+Có thể dùng như:
+
+```java
+Animal a = d;
+Pet p = d;
+```
+
+👉 1 object nhưng dùng theo nhiều interface
+
+---
+
+## 👉 3. Interface = khả năng
+
+| Interface   | Ý nghĩa       |
+| ----------- | ------------- |
+| Animal      | biết ăn, kêu  |
+| Pet         | biết chơi     |
+| SmartAnimal | biết suy nghĩ |
+
+---
+
+# ✅ Tóm tắt
+
+Trong ví dụ này có thể thấy:
+
+✔ `implements` → class dùng interface \
+✔ `extends` → interface kế thừa interface \
+✔ 1 class implement nhiều interface \
+✔ polymorphism (Animal dog = new Dog())
+
+---
