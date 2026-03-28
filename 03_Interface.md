@@ -214,204 +214,192 @@ Interface:
 * Class dùng **implements**
 * Hỗ trợ **đa hình và multiple inheritance**
 
-Ok, mình viết cho bạn **một ví dụ FULL từ A → Z** để bạn thấy rõ:
-
-* Interface
-* implements
-* extends
-* dùng thực tế
-
 ---
 
-# 🔥 Ví dụ hoàn chỉnh: Quản lý động vật
+# 🔥 Ví dụ: Hệ thống thanh toán (Payment)
 
-## 1️⃣ Tạo Interface
+## 1️⃣ Interface
 
 ```java
-interface Animal {
-    void eat();
-    void makeSound();
+interface Payment {
+    boolean pay(int amount);
 }
 ```
 
-```java
-interface Pet {
-    void play();
-}
-```
+👉 Ý nghĩa:
 
-👉 Đây chỉ là **“bản cam kết”**, chưa có code bên trong.
+* Bất kỳ cách thanh toán nào cũng phải có:
+
+```
+pay(số tiền)
+```
 
 ---
 
-## 2️⃣ Class implement Interface
+## 2️⃣ Các class implement (logic KHÁC NHAU)
+
+### 💳 Thanh toán bằng thẻ
 
 ```java
-class Dog implements Animal, Pet {
+class CreditCardPayment implements Payment {
 
-    public void eat() {
-        System.out.println("Dog is eating");
-    }
+    private int balance = 1000;
 
-    public void makeSound() {
-        System.out.println("Dog says: Gâu gâu");
-    }
-
-    public void play() {
-        System.out.println("Dog is playing");
+    public boolean pay(int amount) {
+        if (balance >= amount) {
+            balance -= amount;
+            System.out.println("Paid " + amount + " by Credit Card");
+            return true;
+        }
+        return false;
     }
 }
 ```
 
 ---
 
-## 3️⃣ Class khác implement cùng Interface
+### 📱 Thanh toán bằng ví điện tử
 
 ```java
-class Cat implements Animal, Pet {
+class MomoPayment implements Payment {
 
-    public void eat() {
-        System.out.println("Cat is eating");
-    }
+    private int wallet = 500;
 
-    public void makeSound() {
-        System.out.println("Cat says: Meo meo");
-    }
-
-    public void play() {
-        System.out.println("Cat is playing");
+    public boolean pay(int amount) {
+        if (wallet >= amount) {
+            wallet -= amount;
+            System.out.println("Paid " + amount + " by Momo");
+            return true;
+        }
+        return false;
     }
 }
 ```
 
 ---
 
-## 4️⃣ Interface kế thừa Interface (extends)
+## 3️⃣ Class sử dụng Interface (đây là phần QUAN TRỌNG)
 
 ```java
-interface SmartAnimal extends Animal {
-    void think();
-}
-```
+class OrderService {
 
----
+    private Payment payment;
 
-## 5️⃣ Class implement interface đã kế thừa
-
-```java
-class Human implements SmartAnimal {
-
-    public void eat() {
-        System.out.println("Human eating");
+    public OrderService(Payment payment) {
+        this.payment = payment;
     }
 
-    public void makeSound() {
-        System.out.println("Human talking");
-    }
+    public void checkout(int amount) {
+        boolean success = payment.pay(amount);
 
-    public void think() {
-        System.out.println("Human thinking...");
+        if (success) {
+            System.out.println("Order success");
+        } else {
+            System.out.println("Payment failed");
+        }
     }
 }
 ```
 
+👉 Notice:
+
+```java
+private Payment payment;
+```
+
+KHÔNG phải:
+
+```java
+private CreditCardPayment payment;
+```
+
 ---
 
-## 6️⃣ Main chạy chương trình
+## 4️⃣ Main chạy thử
 
 ```java
 public class Main {
     public static void main(String[] args) {
 
-        // dùng Dog
-        Animal dog = new Dog();
-        dog.eat();
-        dog.makeSound();
+        // dùng Credit Card
+        Payment payment1 = new CreditCardPayment();
+        OrderService order1 = new OrderService(payment1);
+        order1.checkout(300);
 
-        // dùng Cat
-        Animal cat = new Cat();
-        cat.makeSound();
-
-        // dùng Pet
-        Pet pet = new Dog();
-        pet.play();
-
-        // dùng SmartAnimal
-        SmartAnimal human = new Human();
-        human.think();
+        // đổi sang Momo (không sửa OrderService)
+        Payment payment2 = new MomoPayment();
+        OrderService order2 = new OrderService(payment2);
+        order2.checkout(300);
     }
 }
 ```
 
 ---
 
-# 🎯 Output
+# 🎯 Điều quan trọng bạn cần thấy
 
-```text
-Dog is eating
-Dog says: Gâu gâu
-Cat says: Meo meo
-Dog is playing
-Human thinking...
-```
+## 👉 1. Logic KHÁC NHAU nhưng dùng chung interface
+
+| Class        | Logic       |
+| ------------ | ----------- |
+| CreditCard   | trừ balance |
+| Momo         | trừ ví      |
+| Nhưng đều có | `pay()`     |
 
 ---
 
-# 🧠 Giải thích cực quan trọng
+## 👉 2. Không cần sửa code cũ
 
-## 👉 1. Vì sao viết thế này?
+Bạn chỉ đổi:
 
 ```java
-Animal dog = new Dog();
+new CreditCardPayment()
+→ new MomoPayment()
 ```
 
-Không viết:
+👉 `OrderService` **không cần sửa**
+
+---
+
+## 👉 3. Đây chính là sức mạnh của Interface
+
+Nếu không dùng interface:
 
 ```java
-Dog dog = new Dog();
+class OrderService {
+    CreditCardPayment payment; // ❌ cứng
+}
 ```
 
-👉 Vì:
-
-* Sau này có thể thay `Dog` bằng `Cat`, `Bird`
-* Code **linh hoạt hơn**
+👉 Sau này thêm Momo → phải sửa class
 
 ---
 
-## 👉 2. Một object có nhiều “vai trò”
+## 👉 4. Thực tế ngoài đời
 
-```java
-Dog d = new Dog();
+Giống hệt:
+
+* Shopee 
+* Tiki 
+* Grab
+
+Bạn chọn:
+
+```
+Thẻ
+Ví điện tử
+Chuyển khoản
 ```
 
-Có thể dùng như:
-
-```java
-Animal a = d;
-Pet p = d;
-```
-
-👉 1 object nhưng dùng theo nhiều interface
+👉 App vẫn chạy bình thường
 
 ---
 
-## 👉 3. Interface = khả năng
+# ✅ Tóm lại
 
-| Interface   | Ý nghĩa       |
-| ----------- | ------------- |
-| Animal      | biết ăn, kêu  |
-| Pet         | biết chơi     |
-| SmartAnimal | biết suy nghĩ |
+Interface giúp bạn:
 
----
+* Tách **logic sử dụng** và **logic thực thi**
+* Dễ thêm tính năng mới
+* Code **không bị phụ thuộc cứng**
 
-# ✅ Tóm tắt
-
-Trong ví dụ này có thể thấy:
-
-✔ `implements` → class dùng interface \
-✔ `extends` → interface kế thừa interface \
-✔ 1 class implement nhiều interface \
-✔ polymorphism (Animal dog = new Dog())
-
----
