@@ -474,3 +474,98 @@ Nên:
 
 > **Interface chỉ có 1 method → compiler biết chính xác phải gán code vào đâu**
 
+---
+
+# 🧠 📌 BẢNG ĐỌC HIỂU LAMBDA + STREAM (FULL CHEAT SHEET)
+
+## 🔥 1. Quy trình đọc (quan trọng nhất)
+
+| Bước | Làm gì                           | Cách đọc               |
+| ---- | -------------------------------- | ---------------------- |
+| 1    | Xác định nguồn (`list.stream()`) | lấy dữ liệu từ đâu     |
+| 2    | Gặp `filter`                     | giữ lại những cái mà…  |
+| 3    | Gặp `map`                        | biến thành…            |
+| 4    | Gặp `sorted / limit / skip`      | sắp xếp / lấy / bỏ qua |
+| 5    | Gặp `forEach / collect`          | xử lý / trả kết quả    |
+| 6    | Gặp `->`                         | với … thì…             |
+
+---
+
+## ⚡ 2. Từ khóa “focus” (phải nhớ)
+
+| Từ khóa     | Nghĩa     | Cách đọc nhanh |
+| ----------- | --------- | -------------- |
+| `stream()`  | tạo luồng | bắt đầu xử lý  |
+| `filter()`  | lọc       | giữ lại…       |
+| `map()`     | biến đổi  | biến thành…    |
+| `forEach()` | xử lý     | với mỗi… thì…  |
+| `->`        | lambda    | với … thì…     |
+
+---
+
+## 🧩 3. Từ khóa phụ trợ (hay gặp)
+
+| Từ khóa      | Nghĩa         | Cách đọc         |
+| ------------ | ------------- | ---------------- |
+| `sorted()`   | sắp xếp       | sắp xếp lại      |
+| `limit(n)`   | lấy n phần tử | lấy n cái đầu    |
+| `skip(n)`    | bỏ qua        | bỏ qua n cái đầu |
+| `distinct()` | loại trùng    | lấy không trùng  |
+
+---
+
+## 💣 4. Từ khóa nâng cao (gặp sau)
+
+| Từ khóa        | Nghĩa      | Cách đọc        |
+| -------------- | ---------- | --------------- |
+| `flatMap()`    | trải phẳng | gộp nhiều list  |
+| `reduce()`     | gộp        | tính tổng / gom |
+| `collect()`    | thu gom    | trả về kết quả  |
+| `groupingBy()` | nhóm       | nhóm theo       |
+
+---
+
+## 🧠 5. Công thức đọc chuẩn
+
+👉 Luôn đọc theo flow:
+
+> **Lấy → Lọc → Biến → (Sắp xếp / Cắt) → Xử lý**
+
+---
+
+## 🔥 6. Mẫu câu “auto hiểu”
+
+| Code                     | Đọc                     |
+| ------------------------ | ----------------------- |
+| `x -> x > 10`            | với x thì kiểm tra > 10 |
+| `x -> x * 2`             | biến x thành x * 2      |
+| `user -> user.getName()` | lấy tên user            |
+
+---
+
+## 🎯 7. Ví dụ áp dụng
+
+```java
+list.stream()
+    .filter(x -> x > 5)
+    .map(x -> x * 2)
+    .limit(3)
+    .forEach(System.out::println);
+```
+
+👉 Đọc:
+
+> lấy phần tử \
+> → lọc > 5 \
+> → nhân 2 \
+> → lấy 3 cái đầu \
+> → in ra
+
+---
+
+# 🚀 Câu chốt (quan trọng nhất)
+
+> ❗ Không đọc code từng dòng \
+> 👉 hãy đọc như **dòng chảy dữ liệu**
+
+---
