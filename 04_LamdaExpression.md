@@ -339,7 +339,7 @@ Lambda Expression:
 
 **Lambda chỉ dùng được với Functional Interface vì:**
 
-> 👉 Compiler cần biết **Lambda này đang implement method nào**
+> 👉 Compiler cần biết **Lambda này đang implement method nào** \
 > 👉 Nếu interface có **nhiều hơn 1 method → không biết map vào đâu**
 
 ---
