@@ -57,7 +57,7 @@ Tính diện tích:
 - Hình vuông
 - Hình chữ nhật
 ```
-✅ 
+✅ Có, đây là "1 hàm xử lý nhiều chức năng", tuy cùng 1 hành vi: tính diện tích nhưng mà là nhiều loại đối tượng khác nhau nên dùng interface được.
 
 ---
 
@@ -68,7 +68,7 @@ In báo cáo:
 - In ra màn hình
 - In ra file PDF
 ```
-✅ 
+✅ Có, vì đây là 1 việc có nhiều cách làm.
 
 ---
 
