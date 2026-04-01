@@ -167,3 +167,6 @@ Game:
 
 ---
 
+
+# 🟡 Bài 2 (code cơ bản)
+## Yêu cầu: Xây dựng 1 payment có nhiều cách thanh toán, có validate + log + xử lý lỗi nhẹ
