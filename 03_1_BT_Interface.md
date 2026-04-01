@@ -169,4 +169,8 @@ Game:
 
 
 # 🟡 Bài 2 (code cơ bản)
-## Yêu cầu: Xây dựng 1 payment có nhiều cách thanh toán, có validate + log + xử lý lỗi nhẹ
+## Yêu cầu 1: Xây dựng 1 payment có nhiều cách thanh toán, có validate + log + xử lý lỗi nhẹ
+
+[Link ở đây]()
+
+## Yêu cầu 2: Xây dựng 1 chương trình quản lý sinh viên cơ bản bằng Java, trong chương trình có CRUD và tìm kiếm theo tên (có dùng interface)
