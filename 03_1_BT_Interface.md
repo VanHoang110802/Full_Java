@@ -18,6 +18,8 @@ Xem các case sau và trả lời:
 Calculator (cộng, trừ, nhân, chia)
 ```
 
+✅ Không, vì cộng, trừ, nhân, chia -> luôn làm theo 1 cách, Không có nhiều "biến thể"
+
 ---
 
 ### Case 2
@@ -25,6 +27,7 @@ Calculator (cộng, trừ, nhân, chia)
 ```id="c2"
 Thanh toán: Momo, Visa, Bank
 ```
+✅ Có, vì có nhiều cách thực hiện cùng 1 chức năng, Momo -> trừ ví, Visa -> trừ thẻ, Bank -> chuyển khoản. Cùng là pay() nhưng logic khác.
 
 ---
 
@@ -33,6 +36,7 @@ Thanh toán: Momo, Visa, Bank
 ```id="c3"
 Đọc file: chỉ đọc file .txt
 ```
+✅ Không, vì chỉ có 1 kiểu xử lý 1 file duy nhất. 
 
 ---
 
@@ -41,6 +45,7 @@ Thanh toán: Momo, Visa, Bank
 ```id="c4"
 Gửi thông báo: Email, SMS, Push Notification
 ```
+✅ Có, vì
 
 ---
 
@@ -52,6 +57,7 @@ Tính diện tích:
 - Hình vuông
 - Hình chữ nhật
 ```
+✅ 
 
 ---
 
@@ -62,6 +68,7 @@ In báo cáo:
 - In ra màn hình
 - In ra file PDF
 ```
+✅ 
 
 ---
 
@@ -73,6 +80,7 @@ UserService:
 - sửa user
 - xoá user
 ```
+✅ 
 
 ---
 
@@ -83,6 +91,7 @@ Upload file:
 - Upload local
 - Upload lên cloud (AWS, Google Drive)
 ```
+✅ 
 
 ---
 
@@ -92,6 +101,7 @@ Upload file:
 Logger:
 - log ra console
 ```
+✅ 
 
 ---
 
@@ -102,6 +112,7 @@ Sắp xếp mảng:
 - bubble sort
 - quick sort
 ```
+✅ 
 
 ---
 
@@ -111,6 +122,7 @@ Sắp xếp mảng:
 Thanh toán:
 - hiện tại chỉ có Momo
 ```
+✅ 
 
 ---
 
@@ -121,6 +133,7 @@ Gửi OTP:
 - SMS
 - Email
 ```
+✅ 
 
 ---
 
@@ -137,6 +150,7 @@ Database:
 MongoDB
 PostgreSQL
 ```
+✅ 
 
 ---
 
@@ -149,6 +163,7 @@ Game:
     + bắn
     + bay (chỉ một số nhân vật)
 ```
+✅ 
 
 ---
 
