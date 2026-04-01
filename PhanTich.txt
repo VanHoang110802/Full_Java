@@ -1,0 +1,4 @@
+* Phân tích, ý tưởng:
+- Đầu tiên, ta cần hiểu ngầm là có 2 class là student, employee. Tức là đi tạo 1 class bao quát nhất là person chứa chung các thông tin chung như id, name, dob, gender.
+- Sau nếu có trường hợp riêng như score của student, salary của employee thì ta sẽ đi kế thừa lại (extends)
+- Sau đó, lại phân tích nữa được là có dùng chung CRUD cho cả 2 class, vậy nên ta sẽ tạo 1 cái bao quát nữa cho cả 2.
