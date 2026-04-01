@@ -45,7 +45,7 @@ Thanh toán: Momo, Visa, Bank
 ```id="c4"
 Gửi thông báo: Email, SMS, Push Notification
 ```
-✅ Có, vì
+✅ Có, vì cùng 1 hành động nhưng nhiều cách thực hiện: Email → gửi qua SMTP, SMS → qua nhà mạng, Push → qua Firebase. Cùng là 1 hàm send(message) nhưng xử lý khác nhau.
 
 ---
 
