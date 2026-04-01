@@ -80,7 +80,7 @@ UserService:
 - sửa user
 - xoá user
 ```
-✅ 
+✅ Không, đây là CRUD (create, update, delete), không phải nhiều cách làm, mà là nhiều chức năng khác nhau.
 
 ---
 
@@ -91,7 +91,7 @@ Upload file:
 - Upload local
 - Upload lên cloud (AWS, Google Drive)
 ```
-✅ 
+✅ Có, Upload local vs cloud = nhiều cách thực hiện
 
 ---
 
@@ -101,7 +101,7 @@ Upload file:
 Logger:
 - log ra console
 ```
-✅ 
+✅ Không, chỉ có 1 cách là log thôi
 
 ---
 
@@ -112,7 +112,7 @@ Sắp xếp mảng:
 - bubble sort
 - quick sort
 ```
-✅ 
+✅ Có, đây là có nhiều thuật toán khác nhau nên dùng được
 
 ---
 
@@ -122,7 +122,7 @@ Sắp xếp mảng:
 Thanh toán:
 - hiện tại chỉ có Momo
 ```
-✅ 
+✅ Không, chỉ có mỗi xử lý momo thôi
 
 ---
 
@@ -133,7 +133,7 @@ Gửi OTP:
 - SMS
 - Email
 ```
-✅ 
+✅ Có, 1 việc → nhiều cách làm
 
 ---
 
@@ -150,7 +150,7 @@ Database:
 MongoDB
 PostgreSQL
 ```
-✅ 
+✅ Có, vì mỗi cái database khác nhau về cách xử lý
 
 ---
 
@@ -163,7 +163,7 @@ Game:
     + bắn
     + bay (chỉ một số nhân vật)
 ```
-✅ 
+✅ Có, vì có nhiều khả năng khác nhau nên dùng được
 
 ---
 
